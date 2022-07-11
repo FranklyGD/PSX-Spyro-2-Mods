@@ -26,8 +26,10 @@ typedef struct {
 
 void GAME_main();
 void GAME_DrawText(char * text, int x, int y, int colorIndex, TextConfig * textConfig);
-// Semi-transparent, Flat, RGB = (8, 8, 8)
-void GAME_DrawBlackRect(short x1, short x2, short y1, short y2);
+// Opaque, Flat, RGB = (0, 0, 0)
+void GAME_DrawOpaqueBlackRect(short x1, short x2, short y1, short y2);
+// Semi-Transparent, Flat, RGB = (8, 8, 8)
+void GAME_DrawSTBlackRect(short x1, short x2, short y1, short y2);
 void GAME_memcpyWord(int *dst,int *src,int size);
 void GAME_memsetWord(int *buffer,int n,int size);
 

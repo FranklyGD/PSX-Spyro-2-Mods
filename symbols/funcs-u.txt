@@ -4,7 +4,8 @@ GAME_memsetWord = 0x8001b3c8;
 GAME_memcpyWord = 0x8001b40c;
 GAME_DrawText = 0x8004a374;
 GAME_GPU_ChangeTexPage = 0x8004d104;
-GAME_DrawBlackRect = 0x8004d2d8;
+GAME_DrawOpaqueBlackRect = 0x8004dd28;
+GAME_DrawSTBlackRect = 0x8004d2d8;
 
 LIBPAD_PadInitDirect = 0x80054f1c;
 
