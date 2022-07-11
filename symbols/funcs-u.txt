@@ -12,11 +12,20 @@ LIBPAD_PadInitDirect = 0x80054f1c;
 
 LIBCD_CdInit = 0x800582b8;
 
+LIBG_DrawSync = 0x800557e4;
 LIBG_InitGeom = 0x80057b20;
 LIBG_VSync = 0x80058edc;
 LIBG_SetDefDrawEnv = 0x80058e1c;
 LIBG_SetDefDispEnv = 0x800590ec;
+LIBG_SetDispMask = 0x8005574c;
+LIBG_ClearImage = 0x80055968;
+LIBG_LoadImage = 0x800559f8;
 LIBG_SetDrawMode = 0x8005a01c;
+LIBG_StoreImage = 0x80055a58;
+LIBG_MoveImage = 0x80055ab8;
+LIBG_DrawOTag = 0x80055b70;
+LIBG_PutDrawEnv = 0x80055be0;
+LIBG_PutDispEnv = 0x80055ca0;
 LIBG_MulMatrix0 = 0x80059d6c;
 LIBG_ScaleMatrix = 0x80059e7c;
 

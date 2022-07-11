@@ -1,2 +1,3 @@
+GAME_gameState = 0x800681c8;
 GAME_GPUPackets = 0x80067000;
 GAME_GPUPackets_Next = 0x80067030;

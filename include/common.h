@@ -2,6 +2,22 @@
 #define GAME_COMMON_H
 
 /*
+    Enums
+    when we have researched more the game,
+    we can group all these in different header files
+*/
+
+enum GameState {
+    PLAYING = 0, // Normal gameplay
+    TALKING = 1, // Interactions with Zoe, Moneybags...
+    TRANSITION_LOAD_TO_PLAYING = 3, // Happens briefly after a loading screen
+    PAUSED = 4,
+    LOADING_HUBS = 5, // Book load
+    CUTSCENE = 6,
+    LOADING_LEVELS = 7 // Spyro flying skybox animation
+};
+
+/*
     Structs
     when we have researched more the game,
     we can group all these in different header files
@@ -42,5 +58,7 @@ void GAME_DrawGameScreenshot();
     when we have researched more the game,
     we can group all these in different header files
 */
+
+extern int GAME_gameState;
 
 #endif
