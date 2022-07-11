@@ -1,5 +1,3 @@
-from dis import Instruction
-from turtle import pos
 from symbols import Syms
 
 class ASMInstruction:
