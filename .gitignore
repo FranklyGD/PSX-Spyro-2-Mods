@@ -1,3 +1,8 @@
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+
 # IDE files
 .vs
 .vscode
