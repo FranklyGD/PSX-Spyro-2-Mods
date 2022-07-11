@@ -10,6 +10,7 @@ GAME_DrawGameScreenshot = 0x8004e14c;
 
 LIBPAD_PadInitDirect = 0x80054f1c;
 
+LIBCD_CdRead = 0x80058108;
 LIBCD_CdInit = 0x800582b8;
 
 LIBG_DrawSync = 0x800557e4;
