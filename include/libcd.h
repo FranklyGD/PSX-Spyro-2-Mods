@@ -20,7 +20,7 @@ typedef struct {
 
 int LIBCD_CdRead(int sectors, unsigned int * buf, int mode);
 int LIBCD_CdInit();
-void (*LIBCD_CdDataCallback(void (*func)()));
+void * LIBCD_CdDataCallback(void (*func)());
 int LIBCD_CdStatus(void);
 int LIBCD_CdControl(unsigned char com, unsigned char *param, unsigned char *result);
 int LIBCD_CdControlB(unsigned char com, unsigned char *param, unsigned char *result);
