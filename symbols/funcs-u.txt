@@ -19,6 +19,12 @@ LIBPAD_PadInitDirect = 0x80054f1c;
 
 LIBCD_CdRead = 0x80058108;
 LIBCD_CdInit = 0x800582b8;
+LIBCD_CdDataCallback = 0x80058c54
+LIBCD_CdStatus = 0x800587b4;
+LIBCD_CdControl = 0x80058858;
+LIBCD_CdControlB = 0x80058ac8;
+LIBCD_CdReadCallback = 0x800582a4;
+LIBCD_CdIntToPos = 0x80058c98;
 
 LIBG_DrawSync = 0x800557e4;
 LIBG_InitGeom = 0x80057b20;
