@@ -1,0 +1,64 @@
+GAME_main = 0x80011adc;
+GAME_GPUPackets_Insert = 0x8001b390;
+GAME_memsetWord = 0x8001b3c8;
+GAME_memcpyWord = 0x8001b40c;
+GAME_DrawText = 0x8004a374;
+GAME_GPU_ChangeTexPage = 0x8004d104;
+GAME_DrawTransparentFlatRect = 0x8004d2d8;
+
+LIBPAD_PadInitDirect = 0x80054f1c;
+
+LIBCD_CdInit = 0x800582b8;
+
+LIBG_InitGeom = 0x80057b20;
+LIBG_VSync = 0x80058edc;
+LIBG_SetDefDrawEnv = 0x80058e1c;
+LIBG_SetDefDispEnv = 0x800590ec;
+LIBG_SetDrawMode = 0x8005a01c;
+LIBG_MulMatrix0 = 0x80059d6c;
+LIBG_ScaleMatrix = 0x80059e7c;
+
+LIBC_sprintf = 0x800594ac;
+LIBC_rand = 0x80059d2c;
+LIBC_initrand = 0x80059d5c;
+LIBC_printf = 0x8005ab18;
+LIBC_strcpy = 0x8005ab88;
+LIBC_bzero = 0x8005c1b8;
+LIBC_memcpy = 0x8005c1f8;
+LIBC_puts = 0x8005c344;
+LIBC_memchr = 0x8005edc4;
+LIBC_memmove = 0x8005ee14;
+LIBC_strcat = 0x8005ee84;
+
+LIBSPU_SsUtReverbOff = 0x80011d58;
+LIBSPU_SpuSetTransferStartAddr = 0x80059fbc;
+LIBSPU_SpuSetTransferMode = 0x8005a20c;
+LIBSPU_SpuSetCommonAttr = 0x8005912c;
+LIBSPU_SpuRead = 0x8005a0fc;
+LIBSPU_SpuIsTransferCompleted = 0x8005a15c;
+LIBSPU_SpuSetKey = 0x8005a23c;
+LIBSPU_SpuSetVoiceAttr = 0x8005a4a8;
+LIBSPU_SpuStart = 0x8005f06c;
+
+LIBK_LoadExec = 0x8005ab08;
+LIBK_InitHeap = 0x8005abd8;
+LIBK_setExceptionJmpBuf = 0x8005ac24;
+LIBK_ExitCriticalSection = 0x8005aff4;
+LIBK_ReturnFromException = 0x8005b004;
+LIBK_ChangeClearPAD = 0x8005b014;
+LIBK_ChangeClearRCnt = 0x8005b024;
+LIBK_EnterCriticalSection = 0x8005b034;
+LIBK_ResetEntryInt = 0x8005b044;
+LIBK_GPU_cw = 0x8005c1e8;
+LIBK_DeliverEvent = 0x8005d768;
+LIBK_open = 0x8005ef34;
+LIBK_close = 0x8005ef44;
+LIBK_lseek = 0x8005ef54;
+LIBK_read = 0x8005ef64;
+LIBK_write = 0x8005ef74;
+LIBK_sysDeqIntRP = 0x8005f864;
+LIBK_sysEnqIntRP = 0x8005f874;
+LIBK_TestEvent = 0x8005f0e4;
+LIBK_OpenEvent = 0x800600cc;
+LIBK_EnableEvent = 0x800600dc;
+LIBK_CloseEvent = 0x800600ec;

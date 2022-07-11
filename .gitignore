@@ -1,0 +1,20 @@
+# IDE files
+.vs
+.vscode
+
+# C files
+*.o
+*.dep
+*.bin
+
+# ISO files
+*.cue
+*.iso
+
+# Build artifacts
+build/
+debug/
+*.log
+offset.txt
+overlay.ld
+Makefile
