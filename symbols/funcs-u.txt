@@ -13,10 +13,14 @@ GAME_GPUPackets_Insert = 0x8001b390;
 GAME_GPUClearDoubleBuffer = 0x8004c484;
 GAME_GPUChangeTexPage = 0x8004d104;
 
+GAME_Vec3_Scale = 0x8001bcc4;
+GAME_Vec3_LShift = 0x8001bd20;
+GAME_Vec3_RShift = 0x8001bd48;
 GAME_Vec3_Null = 0x8001bda0;
 GAME_Vec3_Move = 0x8001bdb0;
 GAME_Vec3_Sum = 0x8001bdcc;
 GAME_Vec3_Sub = 0x8001be00;
+GAME_Vec3_MultByN = 0x8001be34;
 GAME_Vec3_DivByN = 0x8001be60;
 
 GAME_DrawText = 0x8004a374;
