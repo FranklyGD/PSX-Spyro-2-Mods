@@ -22,17 +22,6 @@ GAME_DrawGameScreenshot = 0x8004e14c;
 
 LIBPAD_PadInitDirect = 0x80054f1c;
 
-LIBCD_CdRead = 0x80058108;
-LIBCD_CdInit = 0x800582b8;
-LIBCD_CdReadCallback = 0x800582a4;
-LIBCD_CdStatus = 0x800587b4;
-LIBCD_CdSync = 0x80058810;
-LIBCD_CdControl = 0x80058858;
-LIBCD_CdControlB = 0x80058ac8;
-LIBCD_CdDataCallback = 0x80058c54;
-LIBCD_CdIntToPos = 0x80058c98;
-LIBCD_CdSync_ = 0x8005c900;
-
 LIBG_DrawSync = 0x800557e4;
 LIBG_InitGeom = 0x80057b20;
 LIBG_VSync = 0x80058edc;
@@ -49,6 +38,17 @@ LIBG_PutDrawEnv = 0x80055be0;
 LIBG_PutDispEnv = 0x80055ca0;
 LIBG_MulMatrix0 = 0x80059d6c;
 LIBG_ScaleMatrix = 0x80059e7c;
+
+LIBCD_CdRead = 0x80058108;
+LIBCD_CdInit = 0x800582b8;
+LIBCD_CdReadCallback = 0x800582a4;
+LIBCD_CdStatus = 0x800587b4;
+LIBCD_CdSync = 0x80058810;
+LIBCD_CdControl = 0x80058858;
+LIBCD_CdControlB = 0x80058ac8;
+LIBCD_CdDataCallback = 0x80058c54;
+LIBCD_CdIntToPos = 0x80058c98;
+LIBCD_CdSync_ = 0x8005c900;
 
 LIBC_sprintf = 0x800594ac;
 LIBC_rand = 0x80059d2c;
