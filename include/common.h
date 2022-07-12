@@ -41,6 +41,8 @@ typedef struct {
 */
 
 void GAME_main();
+void GAME_InitSound();
+void GAME_InitGeometry();
 
 void GAME_memcpyWord(int *dst,int *src,int size);
 void GAME_memsetWord(int *buffer,int n,int size);

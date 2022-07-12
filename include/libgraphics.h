@@ -54,6 +54,8 @@ typedef struct {
     Functions
 */
 
+int LIBG_ResetGraph(int mode);
+void LIBG_SetGraphDebug(int level);
 int LIBG_DrawSync(int mode);
 void LIBG_InitGeom();
 int LIBG_VSync(int mode);

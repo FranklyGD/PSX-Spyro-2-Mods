@@ -1,4 +1,6 @@
 GAME_main = 0x80011adc;
+GAME_InitSound = 0x80011b1c;
+GAME_InitGeometry = 0x80011d24;
 
 GAME_CDLoadWADHeader = 0x80011b3c;
 GAME_CDReadCallback_Func = 0x8001379c;
@@ -6,7 +8,10 @@ GAME_CDReadCallback_Func = 0x8001379c;
 GAME_memsetWord = 0x8001b3c8;
 GAME_memcpyWord = 0x8001b40c;
 
+GAME_GPUInitGraphics = 0x80011bbc;
 GAME_GPUPackets_Insert = 0x8001b390;
+GAME_GPUClearDoubleBuffer = 0x8004c484;
+GAME_GPUChangeTexPage = 0x8004d104;
 
 GAME_Vec3_Null = 0x8001bda0;
 GAME_Vec3_Move = 0x8001bdb0;
@@ -15,13 +20,14 @@ GAME_Vec3_Sub = 0x8001be00;
 GAME_Vec3_DivByN = 0x8001be60;
 
 GAME_DrawText = 0x8004a374;
-GAME_GPU_ChangeTexPage = 0x8004d104;
 GAME_DrawSTBlackRect = 0x8004d2d8;
 GAME_DrawOpaqueBlackRect = 0x8004dd28;
 GAME_DrawGameScreenshot = 0x8004e14c;
 
 LIBPAD_PadInitDirect = 0x80054f1c;
 
+LIBG_ResetGraph = 0x8005557c;
+LIBG_SetGraphDebug = 0x800556f0;
 LIBG_DrawSync = 0x800557e4;
 LIBG_InitGeom = 0x80057b20;
 LIBG_VSync = 0x80058edc;
