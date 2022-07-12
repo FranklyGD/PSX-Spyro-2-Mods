@@ -16,7 +16,7 @@ GAME_DrawOpaqueBlackRect = 0x8004dd28;
 GAME_DrawGameScreenshot = 0x8004e14c;
 
 GAME_CDLoadWADHeader = 0x80011b3c;
-GAME_CD_ReadCallback_Func = 0x8001379c;
+GAME_CDReadCallback_Func = 0x8001379c;
 
 LIBPAD_PadInitDirect = 0x80054f1c;
 

@@ -22,7 +22,7 @@ typedef struct {
 */
 
 void GAME_CDLoadWADHeader();
-void GAME_CD_ReadCallback_Func(int status);
+void GAME_CDReadCallback_Func(int status);
 
 /*
     Data
