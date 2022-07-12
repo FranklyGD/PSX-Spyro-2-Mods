@@ -61,6 +61,8 @@ void GAME_DrawGameScreenshot();
     we can group all these in different header files
 */
 
+extern int GAME_gemCount;
+extern int GAME_gemCountHUD;
 extern int GAME_gameState;
 
 #endif
