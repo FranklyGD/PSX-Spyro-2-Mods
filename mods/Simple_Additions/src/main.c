@@ -91,8 +91,8 @@ void ProcessInput() {
 
 	InputState* currentInput = &GAME_inputStates[0];
 	if (
-		currentInput->current & STICKLEFT && currentInput->pressed & STICKRIGHT ||
-		currentInput->current & STICKRIGHT && currentInput->pressed & STICKLEFT
+		currentInput->current & INPUT_STICKLEFT && currentInput->pressed & INPUT_STICKRIGHT ||
+		currentInput->current & INPUT_STICKRIGHT && currentInput->pressed & INPUT_STICKLEFT
 	) {
 		inHUDOptions = !inHUDOptions;
 		selectedOption = 0;
@@ -103,13 +103,13 @@ void ProcessInput() {
 	}
 
 	if (inHUDOptions) {
-		if (currentInput->pressed & DPADDOWN) {
+		if (currentInput->pressed & INPUT_DPADDOWN) {
 			selectedOption++;
 			if (selectedOption >= MAX_OPTIONS) {
 				selectedOption = 0;
 			}
 		}
-		if (currentInput->pressed & DPADUP) {
+		if (currentInput->pressed & INPUT_DPADUP) {
 			selectedOption--;
 			if (selectedOption <= -1) {
 				selectedOption = MAX_OPTIONS - 1;
@@ -117,15 +117,15 @@ void ProcessInput() {
 		}
 		switch (optionTypes[selectedOption]) {
 			case OPTIONTYPE_TOGGLE:
-				if (currentInput->pressed & CROSS) {
+				if (currentInput->pressed & INPUT_CROSS) {
 					optionValues[selectedOption] = !optionValues[selectedOption]; 
 				}
 				break;
 			case OPTIONTYPE_NUMBER:
-				if (currentInput->pressed & DPADLEFT) {
+				if (currentInput->pressed & INPUT_DPADLEFT) {
 					optionValues[selectedOption]--; 
 				}
-				if (currentInput->pressed & DPADRIGHT) {
+				if (currentInput->pressed & INPUT_DPADRIGHT) {
 					optionValues[selectedOption]++; 
 				}
 				break;
@@ -140,7 +140,7 @@ void ProcessInput() {
 
 	if (optionValues[OPTION_ENABLE_RSTICK_CAMERA]) {
 		if (currentInput->rightStickAnalogX != 0x7f || currentInput->rightStickAnalogY != 0x7f) {
-			GAME_cameraState = PASSIVE;
+			GAME_cameraState = CAMERASTATE_PASSIVE;
 		}
 	}
 }
@@ -279,33 +279,33 @@ void DrawDebugger() {
 		colorPressed.b = 0x80;
 
 		GAME_GPUChangeTexPage(0xa8);
-		DrawRectST(4, 16, FRAME_HEIGHT - 23, FRAME_HEIGHT - 23 + 4, currentInput->current & TRIGGERLEFT ? colorPressed : colorUnpressed);
-		DrawRectST(2, 18, FRAME_HEIGHT - 23 + 5, FRAME_HEIGHT - 23 + 9, currentInput->current & BUMPERLEFT ? colorPressed : colorUnpressed);
+		DrawRectST(4, 16, FRAME_HEIGHT - 23, FRAME_HEIGHT - 23 + 4, currentInput->current & INPUT_TRIGGERLEFT ? colorPressed : colorUnpressed);
+		DrawRectST(2, 18, FRAME_HEIGHT - 23 + 5, FRAME_HEIGHT - 23 + 9, currentInput->current & INPUT_BUMPERLEFT ? colorPressed : colorUnpressed);
 
-		DrawRectST(20 + 4, 20 + 16, FRAME_HEIGHT - 23, FRAME_HEIGHT - 23 + 4, currentInput->current & TRIGGERRIGHT ? colorPressed : colorUnpressed);
-		DrawRectST(20 + 2, 20 + 18, FRAME_HEIGHT - 23 + 5, FRAME_HEIGHT - 23 + 9, currentInput->current & BUMPERRIGHT ? colorPressed : colorUnpressed);
+		DrawRectST(20 + 4, 20 + 16, FRAME_HEIGHT - 23, FRAME_HEIGHT - 23 + 4, currentInput->current & INPUT_TRIGGERRIGHT ? colorPressed : colorUnpressed);
+		DrawRectST(20 + 2, 20 + 18, FRAME_HEIGHT - 23 + 5, FRAME_HEIGHT - 23 + 9, currentInput->current & INPUT_BUMPERRIGHT ? colorPressed : colorUnpressed);
 
-		DrawRectST(7, 13, FRAME_HEIGHT - 23 + 10, FRAME_HEIGHT - 23 + 14, currentInput->current & DPADUP ? colorPressed : colorUnpressed);
-		DrawRectST(13, 19, FRAME_HEIGHT - 23 + 14, FRAME_HEIGHT - 23 + 18, currentInput->current & DPADRIGHT ? colorPressed : colorUnpressed);
-		DrawRectST(7, 13, FRAME_HEIGHT - 23 + 18, FRAME_HEIGHT - 23 + 22, currentInput->current & DPADDOWN ? colorPressed : colorUnpressed);
-		DrawRectST(1, 7, FRAME_HEIGHT - 23 + 14, FRAME_HEIGHT - 23 + 18, currentInput->current & DPADLEFT ? colorPressed : colorUnpressed);
+		DrawRectST(7, 13, FRAME_HEIGHT - 23 + 10, FRAME_HEIGHT - 23 + 14, currentInput->current & INPUT_DPADUP ? colorPressed : colorUnpressed);
+		DrawRectST(13, 19, FRAME_HEIGHT - 23 + 14, FRAME_HEIGHT - 23 + 18, currentInput->current & INPUT_DPADRIGHT ? colorPressed : colorUnpressed);
+		DrawRectST(7, 13, FRAME_HEIGHT - 23 + 18, FRAME_HEIGHT - 23 + 22, currentInput->current & INPUT_DPADDOWN ? colorPressed : colorUnpressed);
+		DrawRectST(1, 7, FRAME_HEIGHT - 23 + 14, FRAME_HEIGHT - 23 + 18, currentInput->current & INPUT_DPADLEFT ? colorPressed : colorUnpressed);
 
 		colorPressed.r = 0x00;
 		colorPressed.g = 0x80;
 		colorPressed.b = 0x00;
-		DrawRectST(20 + 7, 20 + 13, FRAME_HEIGHT - 23 + 10, FRAME_HEIGHT - 23 + 14, currentInput->current & TRIANGLE ? colorPressed : colorUnpressed);
+		DrawRectST(20 + 7, 20 + 13, FRAME_HEIGHT - 23 + 10, FRAME_HEIGHT - 23 + 14, currentInput->current & INPUT_TRIANGLE ? colorPressed : colorUnpressed);
 		colorPressed.r = 0x80;
 		colorPressed.g = 0x00;
 		colorPressed.b = 0x00;
-		DrawRectST(20 + 13, 20 + 19, FRAME_HEIGHT - 23 + 14, FRAME_HEIGHT - 23 + 18, currentInput->current & CIRCLE ? colorPressed : colorUnpressed);
+		DrawRectST(20 + 13, 20 + 19, FRAME_HEIGHT - 23 + 14, FRAME_HEIGHT - 23 + 18, currentInput->current & INPUT_CIRCLE ? colorPressed : colorUnpressed);
 		colorPressed.r = 0x00;
 		colorPressed.g = 0x20;
 		colorPressed.b = 0x80;
-		DrawRectST(20 + 7, 20 + 13, FRAME_HEIGHT - 23 + 18, FRAME_HEIGHT - 23 + 22, currentInput->current & CROSS ? colorPressed : colorUnpressed);
+		DrawRectST(20 + 7, 20 + 13, FRAME_HEIGHT - 23 + 18, FRAME_HEIGHT - 23 + 22, currentInput->current & INPUT_CROSS ? colorPressed : colorUnpressed);
 		colorPressed.r = 0x80;
 		colorPressed.g = 0x00;
 		colorPressed.b = 0x80;
-		DrawRectST(20 + 1, 20 + 7, FRAME_HEIGHT - 23 + 14, FRAME_HEIGHT - 23 + 18, currentInput->current & SQUARE ? colorPressed : colorUnpressed);
+		DrawRectST(20 + 1, 20 + 7, FRAME_HEIGHT - 23 + 14, FRAME_HEIGHT - 23 + 18, currentInput->current & INPUT_SQUARE ? colorPressed : colorUnpressed);
 
 		colorUnpressed.r = 0x20;
 		colorUnpressed.g = 0x20;

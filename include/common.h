@@ -8,76 +8,76 @@
 */
 
 enum InputFlags {
-    TRIGGERLEFT =   0x1, // L2
-    TRIGGERRIGHT =  0x2, // R2
-    BUMPERLEFT =    0x4, // L1
-    BUMPERRIGHT =   0x8, // R1
-    TRIANGLE =      0x10,
-    CIRCLE =        0x20,
-    CROSS =         0x40,
-    SQUARE =        0x80,
-    SELECT =        0x100,
-    STICKLEFT =     0x200, // L3
-    STICKRIGHT =    0x400, // R3
-    START =         0x800,
-    DPADUP =        0x1000,
-    DPADRIGHT =     0x2000,
-    DPADDOWN =      0x4000,
-    DPADLEFT =      0x8000
+    INPUT_TRIGGERLEFT =   0x1, // L2
+    INPUT_TRIGGERRIGHT =  0x2, // R2
+    INPUT_BUMPERLEFT =    0x4, // L1
+    INPUT_BUMPERRIGHT =   0x8, // R1
+    INPUT_TRIANGLE =      0x10,
+    INPUT_CIRCLE =        0x20,
+    INPUT_CROSS =         0x40,
+    INPUT_SQUARE =        0x80,
+    INPUT_SELECT =        0x100,
+    INPUT_STICKLEFT =     0x200, // L3
+    INPUT_STICKRIGHT =    0x400, // R3
+    INPUT_START =         0x800,
+    INPUT_DPADUP =        0x1000,
+    INPUT_DPADRIGHT =     0x2000,
+    INPUT_DPADDOWN =      0x4000,
+    INPUT_DPADLEFT =      0x8000
 };
 
 enum Levels {
-    SUMMER_FOREST = 0,
-    GLIMMER = 1,
-    IDOL_SPRINGS = 2,
-    COLOSSUS = 3,
-    HURRICOS = 4,
-    AQUARIA_TOWERS = 5,
-    SUNNY_BEACH = 6,
-    OCEAN_SPEEDWAY = 7,
-    CRUSHS_DUNGEON = 8,
-    AUTUMN_PLAINS = 9,
-    SKELOS_BADLANDS = 10,
-    CRYSTAL_GLACIER = 11,
-    BREEZE_HARBOR = 12,
-    ZEPHYR = 13,
-    METRO_SPEEDWAY = 14,
-    SCORCH = 15,
-    SHADY_OASIS = 16,
-    MAGMA_CONE = 17,
-    FRACTURE_HILLS = 18,
-    ICY_SPEEDWAY = 19,
-    GULPS_OVERLOOK = 20,
-    WINTER_TUNDRA = 21,
-    MYSTIC_MARSH = 22,
-    CLOUD_TEMPLES = 23,
-    CANYON_SPEEDWAY = 24,
-    ROBOTICA_FARMS = 25,
-    METROPOLIS = 26,
-    DRAGON_SHORES = 27,
-    RIPTOS_ARENA = 28
+    LEVEL_SUMMER_FOREST = 0,
+    LEVEL_GLIMMER = 1,
+    LEVEL_IDOL_SPRINGS = 2,
+    LEVEL_COLOSSUS = 3,
+    LEVEL_HURRICOS = 4,
+    LEVEL_AQUARIA_TOWERS = 5,
+    LEVEL_SUNNY_BEACH = 6,
+    LEVEL_OCEAN_SPEEDWAY = 7,
+    LEVEL_CRUSHS_DUNGEON = 8,
+    LEVEL_AUTUMN_PLAINS = 9,
+    LEVEL_SKELOS_BADLANDS = 10,
+    LEVEL_CRYSTAL_GLACIER = 11,
+    LEVEL_BREEZE_HARBOR = 12,
+    LEVEL_ZEPHYR = 13,
+    LEVEL_METRO_SPEEDWAY = 14,
+    LEVEL_SCORCH = 15,
+    LEVEL_SHADY_OASIS = 16,
+    LEVEL_MAGMA_CONE = 17,
+    LEVEL_FRACTURE_HILLS = 18,
+    LEVEL_ICY_SPEEDWAY = 19,
+    LEVEL_GULPS_OVERLOOK = 20,
+    LEVEL_WINTER_TUNDRA = 21,
+    LEVEL_MYSTIC_MARSH = 22,
+    LEVEL_CLOUD_TEMPLES = 23,
+    LEVEL_CANYON_SPEEDWAY = 24,
+    LEVEL_ROBOTICA_FARMS = 25,
+    LEVEL_METROPOLIS = 26,
+    LEVEL_DRAGON_SHORES = 27,
+    LEVEL_RIPTOS_ARENA = 28
 };
 
 enum GameState {
-    PLAYING = 0, // Normal gameplay
-    TALKING = 1, // Interactions with Zoe, Moneybags...
-    TRANSITION_LOAD_TO_PLAYING = 3, // Happens briefly after a loading screen
-    PAUSED = 4,
-    LOADING_HUBS = 5, // Book load
-    CUTSCENE = 6,
-    LOADING_LEVELS = 7 // Spyro flying skybox animation
+    GAMESTATE_PLAYING = 0, // Normal gameplay
+    GAMESTATE_TALKING = 1, // Interactions with Zoe, Moneybags...
+    GAMESTATE_TRANSITION_LOAD_TO_PLAYING = 3, // Happens briefly after a loading screen
+    GAMESTATE_PAUSED = 4,
+    GAMESTATE_LOADING_HUBS = 5, // Book load
+    GAMESTATE_CUTSCENE = 6,
+    GAMESTATE_LOADING_LEVELS = 7 // Spyro flying skybox animation
 };
 
 enum CameraState {
-    ALIGN = 0,
-    MOVING = 1,
-    CHASEFLY = 3,
-    CHASESWIM = 4,
-    PASSIVE = 6,
-    LOOK = 7,
-    QUICKALIGN = 8,
-    DIALOGUE = 18,
-    WHIRLWINDALIGN = 23
+    CAMERASTATE_ALIGN = 0,
+    CAMERASTATE_MOVING = 1,
+    CAMERASTATE_CHASEFLY = 3,
+    CAMERASTATE_CHASESWIM = 4,
+    CAMERASTATE_PASSIVE = 6,
+    CAMERASTATE_LOOK = 7,
+    CAMERASTATE_QUICKALIGN = 8,
+    CAMERASTATE_DIALOGUE = 18,
+    CAMERASTATE_WHIRLWINDALIGN = 23
 };
 
 /*
@@ -130,6 +130,7 @@ void GAME_InitGeometry();
 void GAME_memcpyWord(int *dst,int *src,int size);
 void GAME_memsetWord(int *buffer,int n,int size);
 
+void GAME_UpdateCameraOrbitPhysics();
 void GAME_ProcessInputSpyro();
 
 void GAME_DrawText(char * text, int x, short y, int colorIndex, TextConfig * textConfig);
