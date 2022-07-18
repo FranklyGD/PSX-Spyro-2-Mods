@@ -1,4 +1,6 @@
 GAME_main = 0x80011adc;
+GAME_ReadInput = 0x8001271c;
+GAME_UpdateGame_Normal = 0x800159c8;
 GAME_InitSound = 0x80011b1c;
 GAME_InitGeometry = 0x80011d24;
 
@@ -13,6 +15,7 @@ GAME_GPUPackets_Insert = 0x8001b390;
 GAME_GPUClearDoubleBuffer = 0x8004c484;
 GAME_GPUChangeTexPage = 0x8004d104;
 
+GAME_Vec3_Len = 0x8001ba20;
 GAME_Vec3_Scale = 0x8001bcc4;
 GAME_Vec3_LShift = 0x8001bd20;
 GAME_Vec3_RShift = 0x8001bd48;
@@ -23,8 +26,22 @@ GAME_Vec3_Sub = 0x8001be00;
 GAME_Vec3_MultByN = 0x8001be34;
 GAME_Vec3_DivByN = 0x8001be60;
 
+GAME_UpdateCameraOrbitPhysics = 0x8001dc6c;
+GAME_ProcessInputSpyro = 0x80035d38;
+
 GAME_DrawText = 0x8004a374;
+GAME_DrawText2 = 0x8004a59c;
+GAME_GetTextWidth = 0x8004a7dc;
+GAME_DrawText_Center = 0x8004d984;
+GAME_DrawText_CenterWithBG = 0x8004d9ec;
+GAME_DrawText_Right = 0x8004da6c;
+GAME_DrawNumberSmall = 0x8004dad0;
+GAME_DrawNumberSmall_Right = 0x8004dbd8;
+GAME_DrawNumberBig = 0x80052328;
+
 GAME_DrawSTBlackRect = 0x8004d2d8;
+GAME_DrawOutlinedBG = 0x8004d348;
+GAME_DrawRoundedBG = 0x8004d508;
 GAME_DrawOpaqueBlackRect = 0x8004dd28;
 GAME_DrawGameScreenshot = 0x8004e14c;
 

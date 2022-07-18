@@ -50,6 +50,38 @@ typedef struct {
     DR_ENV dr_env;
 } DRAWENV;
 
+typedef struct {
+    unsigned int tag;
+    unsigned char r0;
+    unsigned char g0;
+    unsigned char b0;
+    unsigned char code;
+    short x0;
+    short y0;
+    unsigned char r1;
+    unsigned char g1;
+    unsigned char b1;
+    unsigned char p1;
+    short x1;
+    short y1;
+} LINE_G2;
+
+typedef struct {
+    unsigned int tag;
+    unsigned char r0;
+    unsigned char g0;
+    unsigned char b0;
+    unsigned char code;
+    short x0;
+    short y0;
+    short x1;
+    short y1;
+    short x2;
+    short y2;
+    short x3;
+    short y3;
+} POLY_F4;
+
 /*
     Functions
 */

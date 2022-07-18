@@ -1,0 +1,6 @@
+ntsc-u, exe, 0x800156f4, 0x0, src/hudHook.s
+ntsc-u, exe, 0x8001b190, 0x0, src/normalUpdateHook.s
+ntsc-u, exe, 0x800216c0, 0x0, src/cameraPhysicsUpdateHook.s
+ntsc-u, exe, 0x8001b150, 0x0, src/inputReadHook.s
+ntsc-u, exe, 0x8002a0b8, 0x0, src/inputProcessHook.s
+ntsc-u, header, 0x8000B0B8, 0x0, src/main.c

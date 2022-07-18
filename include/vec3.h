@@ -15,6 +15,7 @@ typedef struct {
     Functions
 */
 
+int GAME_Vec3_Len(Vec3 * v, int third_dim);
 // v = v * n / m
 void GAME_Vec3_Scale(Vec3 * v, int m, int n);
 // v = v << (n & 0x1F)

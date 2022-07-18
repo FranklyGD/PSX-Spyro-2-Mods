@@ -4,8 +4,12 @@ GAME_GPUPackets_Next = 0x80067030;
 GAME_GPUScreenBuffer = 0x80069928;
 
 GAME_levelID = 0x80066f54;
+GAME_levelClock = 0x8006700c;
 GAME_gemCount = 0x800670CC;
 GAME_gemCountHUD = 0x80067660;
+GAME_cameraState = 0x80067ed0;
+GAME_cameraOrbitAccel = 0x80067f3c;
+GAME_inputStates = 0x800683a0;
 GAME_gameState = 0x800681c8;
 GAME_spyro = 0x80069ff0;
 
