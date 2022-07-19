@@ -39,6 +39,10 @@ enum AdditionsOptions {
 	OPTION_SHOW_TRUE_VEL,
 	OPTION_SHOW_INPUT,
 	OPTION_ENABLE_RSTICK_CAMERA,
+	OPTION_INVERT_CAMERA_X,
+	OPTION_INVERT_CAMERA_Y,
+	OPTION_TRIGGER_ZOOM_CAMERA,
+	OPTION_KEEP_CAM_ORBIT,
 	OPTION_UPDATE_DELAY,
 	MAX_OPTIONS
 };
@@ -48,7 +52,7 @@ enum OptionType {
 	OPTIONTYPE_NUMBER
 };
 
-char* str_Options[] = {
+char* str_Options[MAX_OPTIONS] = {
 	"Show Level Time",
 	"Show Position",
 	"Show Speed -Phy-",
@@ -57,10 +61,18 @@ char* str_Options[] = {
 	"Show Velocity -Tru-",
 	"Show Input",
 	"Enable R-Stick Cam",
+	"  Invert Horizontal",
+	"  Invert Vertical",
+	"Use Triggers to Zoom",
+	"Keep Camera Orbit",
 	"Update Delay"
 };
 
-char optionTypes[] = {
+char optionTypes[MAX_OPTIONS] = {
+	OPTIONTYPE_TOGGLE,
+	OPTIONTYPE_TOGGLE,
+	OPTIONTYPE_TOGGLE,
+	OPTIONTYPE_TOGGLE,
 	OPTIONTYPE_TOGGLE,
 	OPTIONTYPE_TOGGLE,
 	OPTIONTYPE_TOGGLE,
@@ -138,9 +150,11 @@ void ProcessInput() {
 		}
 	}
 
-	if (optionValues[OPTION_ENABLE_RSTICK_CAMERA]) {
+	if (optionValues[OPTION_ENABLE_RSTICK_CAMERA] && GAME_gameState != GAMESTATE_TALKING) {
+		// Force camera state to passive when analog is used
 		if (currentInput->rightStickAnalogX != 0x7f || currentInput->rightStickAnalogY != 0x7f) {
 			GAME_cameraState = CAMERASTATE_PASSIVE;
+			*(int*)0x80067ed4 = 1; // related to the state of camera and its timer
 		}
 	}
 }
@@ -168,19 +182,75 @@ void UpdateGame_Normal_Override() {
 			updateDelay--;
 		}
 	}
+
+	if (optionValues[OPTION_KEEP_CAM_ORBIT]) {
+		GAME_cameraState = CAMERASTATE_PASSIVE;
+	}
 }
 
 void PreUpdateCameraPhysics() {
-	InputState* currentInput = &GAME_inputStates[0];
-	if (optionValues[OPTION_ENABLE_RSTICK_CAMERA]) {
-		int longSpeed = currentInput->rightStickAnalogX - 0x7f;
-		int latSpeed = currentInput->rightStickAnalogY - 0x7f;
+	static int cameraOrbitVelLong, cameraOrbitVelLat;
 
-		GAME_cameraOrbitAccel.longitude = longSpeed * 10;
-		GAME_cameraOrbitAccel.latitude = latSpeed * 10;
+	InputState* currentInput = &GAME_inputStates[0];
+	short stickX = currentInput->rightStickAnalogX - 0x7f;
+	short stickY = currentInput->rightStickAnalogY - 0x7f;
+	if (optionValues[OPTION_ENABLE_RSTICK_CAMERA]) {
+		if (stickX) {		
+			GAME_cameraOrbitAccel.longitude = -stickX * 0x10;
+			if (optionValues[OPTION_INVERT_CAMERA_X]) {
+				GAME_cameraOrbitAccel.longitude = -GAME_cameraOrbitAccel.longitude;
+			}
+		} // Allow vanilla controls for camera when stick is not used
+
+		GAME_cameraOrbitAccel.latitude = stickY * 10;
+		if (optionValues[OPTION_INVERT_CAMERA_Y]) {
+			GAME_cameraOrbitAccel.latitude = -GAME_cameraOrbitAccel.latitude;
+		}
+	}
+
+	if (optionValues[OPTION_TRIGGER_ZOOM_CAMERA]) {
+		if (!stickX) {
+			GAME_cameraOrbitAccel.longitude = 0;
+		}
+
+		if (currentInput->current & INPUT_TRIGGERRIGHT) {
+			GAME_cameraOrbitAccel.radius = -0x800;
+		}
+
+		if (currentInput->current & INPUT_TRIGGERLEFT) {
+			GAME_cameraOrbitAccel.radius = 0x800;
+		}
+	}
+
+	if (optionValues[OPTION_KEEP_CAM_ORBIT]) {
+		GAME_cameraOrbitVelocity.longitude = cameraOrbitVelLong;
+		GAME_cameraOrbitVelocity.latitude = cameraOrbitVelLat;
+		if (!optionValues[OPTION_TRIGGER_ZOOM_CAMERA]) {
+			GAME_cameraOrbitVelocity.radius = (0xa00 - GAME_cameraOrbitPosition.radius) * 0x10;
+		}
+		GAME_cameraOrbitVelocity.pitch = (- GAME_cameraOrbitPosition.pitch) * 0x10;
+		GAME_cameraOrbitVelocity.yaw = (- GAME_cameraOrbitPosition.yaw) * 0x10;
 	}
 
 	GAME_UpdateCameraOrbitPhysics();
+
+	cameraOrbitVelLong = GAME_cameraOrbitVelocity.longitude;
+	cameraOrbitVelLat = GAME_cameraOrbitVelocity.latitude;
+
+	// Prevent looping vertically
+	if (GAME_cameraOrbitPosition.latitude < 0) {
+		GAME_cameraOrbitPosition.latitude = 0;
+		GAME_cameraOrbitVelocity.latitude = 0;
+	} else if (GAME_cameraOrbitPosition.latitude > 0x400) {
+		GAME_cameraOrbitPosition.latitude = 0x400;
+		GAME_cameraOrbitVelocity.latitude = 0;
+	}
+	
+	// Prevent inverting
+	if (GAME_cameraOrbitPosition.radius < 0) {
+		GAME_cameraOrbitPosition.radius = 0;
+		GAME_cameraOrbitVelocity.radius = 0;
+	}
 }
 
 void DrawDebugger() {

@@ -163,6 +163,8 @@ extern int GAME_levelClock;
 extern int GAME_gemCount;
 extern int GAME_gemCountHUD;
 extern int GAME_cameraState;
+extern Orbit GAME_cameraOrbitPosition;
+extern Orbit GAME_cameraOrbitVelocity;
 extern Orbit GAME_cameraOrbitAccel;
 extern InputState GAME_inputStates[5];
 extern int GAME_gameState;
